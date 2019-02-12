@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -21,14 +24,19 @@ public class Pedido implements Serializable {
 	private Integer id;
 	private Date instante;
 	
-	@OneToOne
+	@OneToOne(cascade =CascadeType.ALL, mappedBy="pedido")
 	private Pagamento pagamento;
-	
+
+	@ManyToOne
+	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 	
-	private Endereco endereco;
+	@ManyToOne
+	@JoinColumn(name="endereco_id")
+	private Endereco enderecoEntrega;
 	
-	private List<Produto> itens = new ArrayList<>();
+	
+	//private List<Produto> itens = new ArrayList<>();
 	
 	public Pedido() {
 	}
@@ -56,20 +64,20 @@ public class Pedido implements Serializable {
 	}
 
 	public Endereco getEndereco() {
-		return endereco;
+		return enderecoEntrega;
 	}
 
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
+	public void setEndereco(Endereco enderecoEntrega) {
+		this.enderecoEntrega = enderecoEntrega;
 	}
-
+/*
 	public List<Produto> getItens() {
 		return itens;
 	}
 
 	public void setItens(List<Produto> itens) {
 		this.itens = itens;
-	}
+	}*/
 
 	public Integer getId() {
 		return id;
