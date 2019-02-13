@@ -41,11 +41,17 @@ public class Pedido implements Serializable {
 	public Pedido() {
 	}
 	
-	public Pedido(Integer id, Date instante) {
+	
+
+	public Pedido(Integer id, Date instante, Cliente cliente, Endereco enderecoEntrega) {
 		super();
 		this.id = id;
 		this.instante = instante;
+		this.cliente = cliente;
+		this.enderecoEntrega = enderecoEntrega;
 	}
+
+
 
 	public Pagamento getPagamento() {
 		return pagamento;
