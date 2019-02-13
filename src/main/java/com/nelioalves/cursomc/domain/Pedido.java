@@ -1,9 +1,9 @@
 package com.nelioalves.cursomc.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -35,13 +36,11 @@ public class Pedido implements Serializable {
 	@JoinColumn(name="endereco_id")
 	private Endereco enderecoEntrega;
 	
-	
-	//private List<Produto> itens = new ArrayList<>();
+	@OneToMany(mappedBy = "id.pedido")
+	private Set<ItemPedido> itens = new HashSet<>();
 	
 	public Pedido() {
 	}
-	
-	
 
 	public Pedido(Integer id, Date instante, Cliente cliente, Endereco enderecoEntrega) {
 		super();
@@ -51,7 +50,13 @@ public class Pedido implements Serializable {
 		this.enderecoEntrega = enderecoEntrega;
 	}
 
+	public Set<ItemPedido> getItens() {
+		return itens;
+	}
 
+	public void setItens(Set<ItemPedido> itens) {
+		this.itens = itens;
+	}
 
 	public Pagamento getPagamento() {
 		return pagamento;
@@ -76,14 +81,6 @@ public class Pedido implements Serializable {
 	public void setEndereco(Endereco enderecoEntrega) {
 		this.enderecoEntrega = enderecoEntrega;
 	}
-/*
-	public List<Produto> getItens() {
-		return itens;
-	}
-
-	public void setItens(List<Produto> itens) {
-		this.itens = itens;
-	}*/
 
 	public Integer getId() {
 		return id;
