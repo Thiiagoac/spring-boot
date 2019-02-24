@@ -1,10 +1,9 @@
 package com.webstore.cursomc.resources;
 
 import java.net.URI;
-<<<<<<< HEAD
-=======
+
 import java.util.List;
->>>>>>> list all categorias
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -50,13 +49,12 @@ public class CategoriaResource {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	} 
-<<<<<<< HEAD
-=======
+
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Categoria>> findAll() {
 		List<Categoria> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
->>>>>>> list all categorias
+
 }
