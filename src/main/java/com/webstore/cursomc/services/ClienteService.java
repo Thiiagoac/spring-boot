@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.webstore.cursomc.domain.Cliente;
-import com.webstore.cursomc.exception.ObjectNotFoundException;
 import com.webstore.cursomc.repositories.ClienteRepository;
+import com.webstore.cursomc.services.exception.ObjectNotFoundException;
 
 @Service
 public class ClienteService {
