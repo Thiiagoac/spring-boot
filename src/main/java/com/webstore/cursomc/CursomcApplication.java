@@ -72,16 +72,14 @@ public class CursomcApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		Categoria cat1 = new Categoria(null,"informatica");
-		Categoria cat2 = new Categoria(null,"escritorio");
-		Categoria cat3 = new Categoria(null,"informaticaaa");
-		Categoria cat4 = new Categoria(null,"escritorio22");
-		Categoria cat5 = new Categoria(null,"informaticad");
-		Categoria cat6 = new Categoria(null,"escritoriossd");
-		Categoria cat7 = new Categoria(null,"informaticafq");
-		Categoria cat8 = new Categoria(null,"escritoriosd");
-		Categoria cat9 = new Categoria(null,"informaticadd");
-		Categoria cat10 = new Categoria(null,"escritorioasdf");
+		Categoria cat1 = new Categoria(null,"ainformatica");
+		Categoria cat2 = new Categoria(null,"bescritorio");
+		Categoria cat3 = new Categoria(null,"cinformaticaaa");
+		Categoria cat4 = new Categoria(null,"descritorio22");
+		Categoria cat5 = new Categoria(null,"einformaticad");
+		Categoria cat6 = new Categoria(null,"fescritoriossd");
+		Categoria cat7 = new Categoria(null,"ginformaticafq");
+		
 		
 		Produto p1 = new Produto(null,"computador",2000.00);
 		Produto p2 = new Produto(null,"impressora",800.0);
@@ -128,7 +126,7 @@ public class CursomcApplication implements CommandLineRunner {
 		
 		
 		
-		catrepo.saveAll(Arrays.asList(cat1,cat2,cat3,cat4,cat5,cat6,cat7,cat8,cat9,cat10));
+		catrepo.saveAll(Arrays.asList(cat1,cat2,cat3,cat4,cat5,cat6,cat7));
 		prodrepo.saveAll(Arrays.asList(p1,p2,p3));
 		estrepo.saveAll(Arrays.asList(est1,est2));
 		cidrepo.saveAll(Arrays.asList(c1,c2,c3));
