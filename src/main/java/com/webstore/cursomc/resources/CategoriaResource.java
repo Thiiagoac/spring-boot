@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -22,11 +24,14 @@ import com.webstore.cursomc.dto.CategoriaDTO;
 import com.webstore.cursomc.services.CategoriaService;
 
 @RestController
-@RequestMapping(value = "/categorias")
+@RequestMapping(value="categorias/")
+@Api(value ="Categoria")
 public class CategoriaResource {
+
 
 	@Autowired
 	private CategoriaService service;
+
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Categoria> find(@PathVariable Integer id) {
@@ -43,6 +48,7 @@ public class CategoriaResource {
 		return ResponseEntity.created(uri).build();
 	}
 
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody Categoria obj, @PathVariable Integer id) {
 		obj.setId(id);
@@ -50,11 +56,13 @@ public class CategoriaResource {
 		return ResponseEntity.noContent().build();
 	}
 
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
+
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<CategoriaDTO>> findAll() {
@@ -62,6 +70,7 @@ public class CategoriaResource {
 		List<CategoriaDTO> listDto = list.stream().map(obj -> new CategoriaDTO(obj)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDto);
 	}
+
 
 	@RequestMapping(value = "/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<CategoriaDTO>> findPage(
